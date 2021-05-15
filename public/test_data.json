@@ -1,0 +1,129 @@
+{
+  "day": "2021-01-03",
+  "speedClass": {
+    "low": [8.5, 30.0],
+    "average": [30.5, 49.5],
+    "high": [50.0, 75.5]
+  },
+  "result": [{
+      "hour": 0,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 1,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 2,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 3,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 4,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 5,
+      "rain": "yok",
+      "speed": "Yüksek Hız"
+    },
+    {
+      "hour": 6,
+      "rain": "yok",
+      "speed": "Yüksek Hız"
+    },
+    {
+      "hour": 7,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 8,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 9,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 10,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 11,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 12,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 13,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 14,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 15,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 16,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 17,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 18,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 19,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 20,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 21,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 22,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    },
+    {
+      "hour": 23,
+      "rain": "yok",
+      "speed": "Düşük Hız"
+    }
+  ]
+}
