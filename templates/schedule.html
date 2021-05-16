@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-5">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Bakım kaydı oluşturuldu</h5>
+          <p class="card-text">
+            {{day}} tarihinde <br>
+            <b>Bakım tipi:</b> {{maintenance_type}} <br>
+            <b>Nedeni:</b> {{reason}} <br>
+            <b>İlçe:</b> {{district}} <br>
+            <b>Mahalle:</b> {{neighborhood}} <br>
+            <b>Sokak:</b> {{street}} <br>
+            <b>Başlangıç saati:</b> {{start_time}} <b>Bitiş saati:</b>{{end_time}} <br>
+            <b>Toplam süre: </b> {{ total_time }} saat </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

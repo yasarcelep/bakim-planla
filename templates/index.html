@@ -2,52 +2,49 @@
 {% block content %}
 <div class="container">
 
-  <div class="row">
-    <h1> </h1>
-    <h4> </h4>
-
-    <div class="col-3">
+  <div class="row justify-content-center">
+    <div class="col-5">
       <form method="post" action="/predictions">
       <div class="mb-3">
           <label for="maintenance_type" class="form-label">Bakım türü</label>
-          <select id="maintenance_type" class="form-select" aria-label="Disabled select example" disabled>
-            <option selected>Yol bakım</option>
+          <select id="maintenance_type"  name="maintenance_type" class="form-select" aria-label="select">
+            <option value="Yol bakım" selected>Yol bakım</option>
           </select>
         </div>
       <div class="mb-3">
-          <label for="maintenance_type" class="form-label">Bakım nedenini giriniz:</label>
-          <input id="maintenance_type" class="form-select" aria-label="Disabled"></input>
+          <label for="reason" class="form-label">Bakım nedenini giriniz:</label>
+           <input id="reason" name="reason" class="form-control" type="text"></input>
         </div>
 
         <div class="mb-3">
           <label for="district" class="form-label">İlçe</label>
-          <select id="district" class="form-select" aria-label="Disabled select example" disabled>
-            <option selected>Beşiktaş</option>
+          <select id="district" name="district" class="form-select" aria-label="select">
+            <option value="Beşiktaş" selected>Beşiktaş</option>
           </select>
         </div>
 
         <div class="mb-3">
           <label for="neighborhood" class="form-label">İlçe</label>
-          <select id="neighborhood" class="form-select" aria-label="Disabled select example" disabled>
-            <option selected>Cihannüma Mah.</option>
+          <select id="neighborhood" name='neighborhood' class="form-select" aria-label="select" >
+            <option value="Cihannüma Mah." selected>Cihannüma Mah.</option>
           </select>
         </div>
 
         <div class="mb-3">
           <label for="street" class="form-label">Sokak/Cadde/Bulvar</label>
-          <select class="form-select" aria-label="Disabled select example" disabled>
-            <option selected>Barbaros Bulvarı</option>
+          <select class="form-select" aria-label="select">
+            <option value="Barbaros Bulvarı" selected>Barbaros Bulvarı</option>
           </select>
         </div>
 
         <div class="mb-3">
           <label for="maintenance_day" class="form-label">Bakım günü</label>
-          <input id="maintenance_day" type="date" name="trip-start" value="2021-05-17" min="2021-05-17"
-            max="2021-06-18" required>
+          <input id="maintenance_day" type="date" name="maintenance_day" value="{{ min_day }}" min="{{ min_day }}"
+            max="{{ max_day }}" required>
         </div>
 
         <div class="mb-3">
-          <button type="submit" class="btn btn-primary">Bakım planla</button>
+          <button type="submit" class="btn btn-primary">Hesapla!</button>
         </div>
       </form>
     </div>

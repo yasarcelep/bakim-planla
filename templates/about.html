@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+
+  <div class="row justify-content-center">
+     <div class="col-5 align-self-center" style="margin-top:25px;">
+        
+      <p class="lead">
+        Makine öğrenmesi kullanarak uygun bakım saatlerinin seçilebilmesi ve kaydedilmesini hedefledik
+      </p>
+
+      <p>Bu çalışma kapsamında <mark>XXX</mark> modelini kullandık yaptığımız calısmalarda daha yüksek başarım verdiğini tespit ettik.</p>
+      <p>Kullandığımız veriler:</p>
+      <p>Geliştirilebilir özellikler</p>
+      <ul>
+        <li>Maç günleri ya da toplumsal olaylar gibi normal olmayan durumlar temizlenmeli</li>
+        <li>Veritabanı bağlanmalı</li>
+        <li>Makine öğrenmesi için geliştirilen kod web uygulamasından çıkartılmalı</li>
+        <li>Harita eklenmeli ve böylece tam olarak bakım noktası kaydedilmeli</li>
+        <li>Bakım sonrası bakımın sürdüğü saatler not edilmeli</li>
+        <li>Bakım raporu burada tutulabilir</li>
+      </ul>
+
+     </div>
+    <div class="row justify-content-center">
+      <h2> Takım </h2>
+      {% for member in team['team'] %}
+        <div class="card" style="width: 15rem; margin: 15px;">
+          <div class="card-body">
+            <h5 class="card-title">{{ member.name }}</h5>
+            <p class="card-text">
+            {% if member.website %} <a href="{{ member.website }}">Website</a> {% endif %}
+            <a href="https://linkedin.com/in/{{ member.linkedin }}">Linkedin</a>
+            {% if member.git %}<a href="{{ member.git }}">Git</a>{% endif %}
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

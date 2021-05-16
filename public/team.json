@@ -1,0 +1,15 @@
+{
+ "team":[
+   {"name":"Yaşar Celep",
+  "linkedin":"yasarcelep",
+  "git":"https://github.com/yasarcelep",
+  "website":"https://yasarcelep.com/"},
+  {"name":"Mustafa Durmuş",
+    "linkedin":"mustafadurmuss",
+    "git":"https://github.com/mdurmuss",
+    "website":"https://mdurmuss.github.io/"},
+  {"name":"Merve Timurlenk",
+    "linkedin":"merve-timurlenk-758910119"},
+    {"name":"Fatih Bilgin",
+    "linkedin":"fatihbilgin"} 
+    ]}

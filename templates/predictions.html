@@ -1,43 +1,110 @@
 {% extends "layout.html" %}
 {% block content %}
-  <div class="container">
-    <div class="row">
-      <h1> {{ data['day'] }} günü için saatler </h1>
-      <h4> En yüksek hız: {{ data['speedClass']['high'] }} <br> Ortalama hız: {{ data['speedClass']['average'] }} <br> Düşük hız: {{ data['speedClass']['low'] }} </h4>
-    
-      <div class="col">
-      <form method="post" action="/schedule">
-       <input name="day" type="textbox" value="{{ data['day'] }}" hidden></input>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+    <form method="post" action="/schedule">
+      <h3> {{ maintenance_day.strftime("%d %B %Y") }} günü için saatler </h3>
+      <p><b> Tatil mi?:</b> {% if data['speedClass']['is_holiday'] %} Evet {% else %} Hayır {% endif %} </p>
+      <p>En yüksek hız: {{ data['speedClass']['High Speed'] }}</p>
+      <p>Ortalama hız: {{ data['speedClass']['Average Speed'] }}</p>
+      <p>Düşük hız: {{ data['speedClass']['Low Speed'] }} </p>
+      <div class="mb-3">
+        <label for="maintenance_type" class="form-label">Bakım türü</label>
+        <select id="maintenance_type" name="maintenance_type" class="form-select" aria-label="select">
+          <option value="Yol bakım" selected>Yol bakım</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="reason" class="form-label">Bakım nedenini giriniz:</label>
+        <input id="reason" name="reason" class="form-control" type="text" value="{{ reason }}"></input>
+      </div>
+
+      <div class="mb-3">
+        <label for="district" class="form-label">İlçe</label>
+        <select id="district" name="district" class="form-select" aria-label="select">
+          <option value="Beşiktaş" selected>Beşiktaş</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="neighborhood" class="form-label">İlçe</label>
+        <select id="neighborhood" name='neighborhood' class="form-select" aria-label="select">
+          <option value="Cihannüma Mah." selected>Cihannüma Mah.</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="street" class="form-label">Sokak/Cadde/Bulvar</label>
+        <select id="street" name="street" class="form-select" aria-label="select">
+          <option value="Barbaros Bulvarı" selected>Barbaros Bulvarı</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="maintenance_day" class="form-label">Bakım günü</label>
+        <input id="maintenance_day" type="date" value="{{ maintenance_day.strftime("%Y-%m-%d") }}" disabled>
+        <input name="maintenance_day" value="{{ maintenance_day.strftime("%Y-%m-%d") }}" hidden>
+      </div>
+      
+      <div class="mb-3">
+        <a class="btn btn-danger" href="/">Geri dön</a>
+        
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create_maintenance_plan">
+          Kaydet
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="create_maintenance_plan" tabindex="-1" aria-labelledby="create_maintenance_plan" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Onay</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Bakım planı oluşturulacaktır, onaylıyor musunuz?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                <button type="submit" class="btn btn-primary">Değişiklikleri kaydet</button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col">
         <table class="table">
           <thead>
             <tr>
               <th scope="col">Saat</th>
-              <th scope="col">Yağış?</th>
-              <th scope="col">Trafik akışı?</th>
-              <th scope="col">Select?</th>
+              <th scope="col">Yağış var mı?</th>
+              <th scope="col">Trafik akışı</th>
             </tr>
           </thead>
-          <tbody>           
+          <tbody>
             {% for item in data['result'] %}
-              {% if item['speed'] == "Düşük Hız" %}
+              {% if item['speed'] == "Low Speed" or item['rain']  %}
                 <tr class="table-danger">
-              {% elif item['speed'] == "Yüksek Hız" %}
+              {% elif item['speed'] == "High Speed" %}
                 <tr class="table-success">
               {% else %}
                 <tr class="table-light">
               {% endif %}
-                  <th scope="row">{{ item['hour'] }}</th>
-                  <td>{{ item['rain'] }}</td>
-                  <td>{{ item['speed'] }}</td>
-                  <td><input type="checkbox" name="maintenance_hours[]" value="{{ item['hour'] }}"></input></td>
-                </tr>
+              <th scope="row"><input type="checkbox" name="maintenance_hours" value="{{ item['hour'] }}" id="{{ item['hour'] }}"></input> <label class="form-check-label" for="{{ item['hour'] }}">{{ item['hour'] }}</label></th>
+              <td>{{ 'Evet' if item['rain'] else 'Hayır' }}</td>
+              <td>{{ item['speed'] }}</td>
+            </tr>
             {% endfor %}
           </tbody>
         </table>
-        <a class="btn btn-primary" href="/">Geri dön</a>
-        <button type="submit" class="btn btn-primary">Bakım planla</button>
-        </form>
-      </div>
+      </form>
     </div>
   </div>
+</div>
 {% endblock %}
