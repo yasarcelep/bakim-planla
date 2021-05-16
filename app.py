@@ -27,6 +27,8 @@ def predictions():
         mlmodel_object = model.MLModel(date=maintenance_day.strftime("%Y-%m-%d"))
         # TODO: Prediction queue'ya atılmalı ve asenkron yapılmalı. Bkz. HTTP Request Timeout
         data = mlmodel_object.predict()
+        print(data['is_holiday'])
+
         return render_template('predictions.html', data=data, reason=reason, maintenance_day=maintenance_day)
 
 @app.route('/schedule',  methods=['GET', 'POST'])

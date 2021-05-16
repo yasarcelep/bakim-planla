@@ -5,7 +5,7 @@
     <div class="col-3">
     <form method="post" action="/schedule">
       <h3> {{ maintenance_day.strftime("%d %B %Y") }} günü için saatler </h3>
-      <p><b> Tatil mi?:</b> {% if data['speedClass']['is_holiday'] %} Evet {% else %} Hayır {% endif %} </p>
+      <p><b> Tatil mi?:</b> {% if data['is_holiday'] %} Evet {% else %} Hayır {% endif %} </p>
       <p>En yüksek hız: {{ data['speedClass']['High Speed'] }}</p>
       <p>Ortalama hız: {{ data['speedClass']['Average Speed'] }}</p>
       <p>Düşük hız: {{ data['speedClass']['Low Speed'] }} </p>
@@ -60,7 +60,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Onay</h5>
+                <h5 class="modal-title" id="create_maintenance_plan">Onay</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">

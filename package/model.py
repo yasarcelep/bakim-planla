@@ -5,7 +5,6 @@
 import json
 import weathercom
 from joblib import load
-import numpy as np
 import datetime
 
 
@@ -55,9 +54,9 @@ class MLModel:
         # hour ve isRainy dinamik.
         for hour, is_rainy in self.find_rain():
 
-            ex = np.array([[self.date.month, self.date.day, hour,
+            ex = [[self.date.month, self.date.day, hour,
                             self.is_holiday, self.is_weekend,
-                            self.is_school_holiday, is_rainy]])
+                            self.is_school_holiday, is_rainy]]
             label = model.predict(ex)[0]
             self.will_be_returned['result'].append({'hour': hour,
                                                     'rain': is_rainy,
@@ -104,19 +103,7 @@ class MLModel:
                              "2021-07-19", "2021-07-20", "2021-07-21",
                              "2021-07-22", "2021-07-23", "2021-08-30",
                              "2021-10-28", "2021-10-29", "2021-12-31",]
-        if self.date in national_holidays:
+        if self.text_date in national_holidays:
             return 1
         else:
             return 0
-
-
-def main():
-    input_date = '2021-05-23'
-
-    my_model = MLModel(date=input_date)
-    result = my_model.predict()
-    print(json.loads(json.dumps(result)))
-
-
-if __name__ == '__main__':
-    main()
