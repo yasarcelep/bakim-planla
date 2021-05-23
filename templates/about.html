@@ -4,38 +4,109 @@
 <div class="container">
 
   <div class="row justify-content-center">
-     <div class="col-5 align-self-center" style="margin-top:25px;">
-        
+    <div class="col-5 align-self-center" style="margin-top:25px;">
+      <h2>Hakkında</h2>
       <p class="lead">
         Makine öğrenmesi kullanarak uygun bakım saatlerinin seçilebilmesi ve kaydedilmesini hedefledik
       </p>
+      <p>Bu çalışma kapsamında <mark>K-Neighbors</mark> modelini kullandık yaptığımız calısmalarda daha yüksek başarım
+        verdiğini
+        tespit ettik.
+        <ul>
+          <li>K-Means yöntemi ile ML modeli 0-90 arası bir hız tahmini yapmak yerine, düşük, ortalama, yüksek hız
+            şeklinde toplamda veri 3 sınıfa ayrıldı.</li>
+          <li>Cross Validation yapılarak model test edildi.</li>
+          <li>Modelin test ve train aşamasında K- Neighbors modelini kullanıldı.</li>
+          <li>Yaptığımız çalışmalarda bu model ile %75 başarı verdiğini tespit edildi.</li>
+        </ul>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Model</th>
+              <th scope="col">Başarı oranı</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr class="table-light">
+            <td>Perceptron</td>
+            <td>0.50</td>
+          </tr>
+          <tr class="table-light">
+            <td>Naive Bayes</td>
+            <td>0.52</td>
+          </tr>
+          <tr class="table-success">
+            <td>K- Neighbors</td>
+            <td>0.75</td>
+          </tr>
+          <tr class="table-light">
+            <td>Decision Tree</td>
+            <td>0.61</td>
+          </tr>
+          <tr class="table-light">
+            <td>Support Vector</td>
+            <td>0.64</td>
+          </tr>
+          </tbody>
 
-      <p>Bu çalışma kapsamında <mark>XXX</mark> modelini kullandık yaptığımız calısmalarda daha yüksek başarım verdiğini tespit ettik.</p>
-      <p>Kullandığımız veriler:</p>
+        </table>
+        
+
+      </p>
+      <p>Kullandığımız veriler:
+        <ul>
+          <li>2019’un ilk 6 ayını içeren Beşiktaş ilçesinin ortalama hızları</li>
+          <li>Beşiktaş ilçesi günlük yağış tahmini verileri</li>
+          <li>2019’daki resmi tatiller, hafta sonu ve okul tatilleri</li>
+        </ul>
+      </p>
+
+      <p>
+        Karşılaştığımız zorluklar:
+        <ul>
+          <li>Yol bakım çalışmalarının gece veya gündüz olarak ayrılmış olması, saat bilgisinin yer almaması</li>
+          <li>Barbaros Bulvarındaki bakım çalışmalarının az olması nedeniyle modelimizin bu çalışmaların etkisini tahminlemesi</li>
+          <li>Tahmin etmeye çalıştığımız hız verisine etki eden çok fazla değişken bulunuyor
+            <ul>
+              <li>Pandemi dönemi verilerinin(trafik hızı, yasaklar) elimizde olmaması</li>
+              <li>Geriye dönük hava durumu verisinin eksik olması</li>
+              <li>Geriye dönük bakım verisinin eksik olması</li>
+              <li>Verilerin güncelliği</li>
+              <li>Trafiğinin maçlardan etkilenmesi</li>
+              <li>Trafik kazalarının etkisi</li>
+              <li>Devlet erkanı ya da siyasi gösteriler nedeniyle trafik akışının durdurulması</li>
+              <li>Avrupa yakasındaki trafik durumunun dolaylı olarak Barbaros Bulvarını etkilemesi</li> 
+            </ul>
+          </li>
+        </ul>
+      </p>
+
       <p>Geliştirilebilir özellikler</p>
       <ul>
-        <li>Maç günleri ya da toplumsal olaylar gibi normal olmayan durumlar temizlenmeli</li>
         <li>Veritabanı bağlanmalı</li>
+        <li>Saat ekleme kısmının geliştirilmesi</li>
+        <li>Karantina dönemi için güncel verilerin eklenmesi</li>
+        <li>Maç günleri ya da toplumsal olaylar gibi normal olmayan durumlar temizlenmeli</li>
         <li>Makine öğrenmesi için geliştirilen kod web uygulamasından çıkartılmalı</li>
         <li>Harita eklenmeli ve böylece tam olarak bakım noktası kaydedilmeli</li>
-        <li>Bakım sonrası bakımın sürdüğü saatler not edilmeli</li>
-        <li>Bakım raporu burada tutulabilir</li>
+        <li>Bakım sonrası bakım saatlerini eklenebilmeli</li>
+        <li>Bakım raporunun üretilmesi</li>
       </ul>
 
-     </div>
+    </div>
     <div class="row justify-content-center">
       <h2> Takım </h2>
       {% for member in team['team'] %}
-        <div class="card" style="width: 15rem; margin: 15px;">
-          <div class="card-body">
-            <h5 class="card-title">{{ member.name }}</h5>
-            <p class="card-text">
+      <div class="card" style="width: 15rem; margin: 15px;">
+        <div class="card-body">
+          <h5 class="card-title">{{ member.name }}</h5>
+          <p class="card-text">
             {% if member.website %} <a href="{{ member.website }}">Website</a> {% endif %}
             <a href="https://linkedin.com/in/{{ member.linkedin }}">Linkedin</a>
             {% if member.git %}<a href="{{ member.git }}">Git</a>{% endif %}
-            </p>
-          </div>
+          </p>
         </div>
+      </div>
       {% endfor %}
     </div>
   </div>

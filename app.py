@@ -42,8 +42,12 @@ def schedule():
     street = request.form['street']
 
     maintenance_hours = request.form.getlist('maintenance_hours')
-    start_time = int(min(maintenance_hours))
-    end_time = int(max(maintenance_hours))
+    
+    maintenance_hours_map = map(lambda hour:int(hour), maintenance_hours)
+    maintenance_hours = list(maintenance_hours_map)
+
+    start_time = min(maintenance_hours)
+    end_time = max(maintenance_hours) + 1
     total_time = end_time - start_time
     return render_template('schedule.html', day=day, reason=reason, district=district, 
                                             neighborhood=neighborhood, street=street,

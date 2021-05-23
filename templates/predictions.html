@@ -5,6 +5,7 @@
     <div class="col-3">
     <form method="post" action="/schedule">
       <h3> {{ maintenance_day.strftime("%d %B %Y") }} günü için saatler </h3>
+      <p>Başlangıç ve bitiş saati seçiniz.</p>
       <p><b> Tatil mi?:</b> {% if data['is_holiday'] %} Evet {% else %} Hayır {% endif %} </p>
       <p>En yüksek hız: {{ data['speedClass']['High Speed'] }}</p>
       <p>Ortalama hız: {{ data['speedClass']['Average Speed'] }}</p>
